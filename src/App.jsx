@@ -11,10 +11,10 @@ function App() {
 
   return (
     <div className=''>
-      <video src={video} autoPlay loop className='video-background' muted playsInline>
+      {/* <video src={video} autoPlay loop className='video-background' muted playsInline>
        
     
-      </video>
+      </video> */}
       <RouterProvider router={router}></RouterProvider>
     </div>
   )

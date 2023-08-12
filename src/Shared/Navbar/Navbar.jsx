@@ -6,7 +6,18 @@ import { FaSignOutAlt, FaSignInAlt, FaHome, FaRProject, FaBloggerB, FaCloudDownl
 import logo from '../../assets/logo/logo-v.jpg'
 const Navbar = () => {
   const [open, setOpen] = useState(false)
-
+  const [isOpen, setIsOpen] = useState(false)
+  const lists = [
+    {
+      name:"3D Animation",
+      link:'services/animation'
+    },
+    {
+      name:"CGI",
+      link:'services/cgi'
+    }
+  ]
+  
   return (
     <nav className='p-5 shadow-lg bg-black border-b-2  md:flex md:items-center md:justify-between sticky top-0 z-10'> 
       <div className='flex justify-between items-center'>
@@ -31,10 +42,15 @@ const Navbar = () => {
             Home
           </Link>
         </li>
-        <li className='mx-4 my-6 md:my-0'>
-          <Link to={'/services'} className='text-white flex items-center hover:text-gray'>
+        <li className='mx-4 my-6 md:my-0 w-full relative'>
+          <Link to={'/services'} onMouseEnter={()=> setIsOpen((prev)=> !prev)} className='text-white flex items-center hover:text-gray'>
           <FaRProject className='me-1'></FaRProject>
             Services
+          {
+            isOpen && <div className='w-full absolute top-6'>{lists.map((list,i)=>(
+              <h3 className='bg-white border-b-2' style={{width:'115px'}} key={i}><Link to={list.link} className=''  >{list.name}</Link></h3>
+            ))}</div>
+          }
           </Link>
         </li>
         <li className='mx-4 my-6 md:my-0'>
